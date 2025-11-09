@@ -22,11 +22,6 @@ import { SoaresComponent } from './entregas/soares/component/soaresComponent/soa
 import { UskiComponent } from './entregas/uski/component/uskiComponent/uskiComponent';
 import { ZanonComponent } from './entregas/zanon/component/zanonComponent/zanonComponent';
 
-
-
-
-
-
 export const routes: Routes = [
   { path: '', component: Home },
   { path: 'home', component: Home },
