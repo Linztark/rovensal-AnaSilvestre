@@ -44,15 +44,21 @@ h2 {
 /* Tarjeta de personaje */
 .personaje-card {
   background-color: #f9fafb;
-  border: 1px solid #ddd;
+  border: 2px solid #ddd;
   border-radius: 12px;
   padding: 1rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
 
 .personaje-card:hover {
   transform: scale(1.03);
+}
+
+/* Clase dinámica para personaje seleccionado */
+.personaje-card.seleccionado {
+  box-shadow: 0 4px 12px rgba(0, 119, 182, 0.4);
+  background-color: #f0f8ff;
 }
 
 .personaje-card h3 {

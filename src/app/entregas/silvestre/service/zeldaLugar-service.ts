@@ -6,6 +6,10 @@ import { ZeldaLugar } from '../model/zeldaLugarInterface';
 import { ZeldaJuegosService } from './zeldaJuego-service';
 import { ZeldaPersonajesService } from './zeldaPersonaje-service';
 
+/**
+ * Servicio para gestionar los lugares de The Legend of Zelda
+ * Consume la API externa y resuelve las relaciones con juegos y personajes
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -15,6 +19,11 @@ export class ZeldaLugaresService {
   private juegosService = inject(ZeldaJuegosService);
   private personajesService = inject(ZeldaPersonajesService);
 
+  /**
+   * Obtiene todos los lugares disponibles cargando múltiples páginas
+   * Carga 100 páginas en paralelo para obtener el máximo de lugares posible
+   * @returns Observable con la colección completa de lugares
+   */
   getLugares(): Observable<{ success: boolean; count: number; data: ZeldaLugar[] }> {
     // Cargar 100 páginas de lugares
     const peticiones: Observable<ZeldaLugar[]>[] = [];
@@ -41,7 +50,12 @@ export class ZeldaLugaresService {
     );
   }
 
-  // Datos de lugar específico cuando se necesite
+  /**
+   * Resuelve los datos de un lugar específico, convirtiendo URLs a nombres legibles
+   * Obtiene los nombres reales de los juegos y personajes asociados al lugar
+   * @param lugar - Lugar cuyos datos se van a resolver
+   * @returns Observable con el lugar enriquecido con nombres de juegos y personajes
+   */
   resolverDatosLugar(lugar: ZeldaLugar): Observable<ZeldaLugar> {
     const appearances$ = lugar.appearances?.length 
       ? forkJoin(
@@ -77,6 +91,11 @@ export class ZeldaLugaresService {
     );
   }
 
+  /**
+   * Extrae el ID de una URL de la API
+   * @param url - URL completa de la API (ej: https://zelda.fanapis.com/api/games/12345)
+   * @returns ID extraído de la URL
+   */
   private extraerIdDeUrl(url: string): string {
     const partes = url.split('/');
     return partes[partes.length - 1];

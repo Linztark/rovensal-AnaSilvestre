@@ -3,10 +3,14 @@
 
   @if (cargando) {
     <p>Cargando personajes...</p>
+  } @else if (error) {
+    <p [style.color]="'red'" [style.font-weight]="'bold'">{{ error }}</p>
   } @else {
     <div class="personajes-grid">
       @for (personaje of personajes; track personaje.id) {
-        <div class="personaje-card">
+        <div class="personaje-card" 
+             [class.seleccionado]="personaje.id === personajeSeleccionado?.id"
+             [style.border-color]="personaje.gender === 'Male' ? '#4a90e2' : personaje.gender === 'Female' ? '#e24a8d' : '#888'">
           <h3>{{ personaje.name }}</h3>
           <p><strong>Género:</strong> {{ personaje.gender || 'Desconocido' }}</p>
           <p><strong>Raza:</strong> {{ personaje.race || 'Desconocida' }}</p>
