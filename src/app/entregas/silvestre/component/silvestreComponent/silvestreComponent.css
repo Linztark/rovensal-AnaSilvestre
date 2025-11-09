@@ -23,12 +23,25 @@
   font-weight: 600;
 }
 
+.menu nav {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  /* prevent links wrapping under the title */
+  white-space: nowrap;
+}
+
 .menu nav a {
   color: white;
   text-decoration: none;
-  margin-left: 1.5rem;
   font-weight: 500;
   transition: opacity 0.2s ease;
+}
+
+/* make title take available space but allow nav to stay on one line */
+.menu h1 {
+  flex: 1 1 auto;
+  min-width: 0; /* allow truncation if needed */
 }
 
 .menu nav a:hover {

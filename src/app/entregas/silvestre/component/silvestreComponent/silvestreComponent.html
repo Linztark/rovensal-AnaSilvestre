@@ -11,6 +11,31 @@
   </header>
 
   <main class="contenido">
+    <section class="extras-controls" style="margin-bottom:1rem">
+      <button (click)="showLogin = true">Entrar y seleccionar compañero</button>
+      <button (click)="showPicker = true">Seleccionar compañero</button>
+    </section>
+
+    <app-login-modal [visible]="showLogin" [companions]="companions" (close)="onLoginClose($event)"></app-login-modal>
+    <app-companion-picker [visible]="showPicker" [companions]="companions" (close)="onPickerClose($event)"></app-companion-picker>
+
+    <section class="status" style="margin-bottom:1rem">
+      @if (selectedUser) {
+        <p><strong>Nombre:</strong> {{ selectedUser.nombre }}</p>
+        <p><strong>Email:</strong> {{ selectedUser.email }}</p>
+        <p><strong>Companion id:</strong> {{ selectedUser.companionFav }}</p>
+      } @else {
+        <p>Nadie conectado</p>
+      }
+
+      @if (selectedCompanion) {
+        <p><strong>{{ selectedCompanion.name }}</strong> — {{ selectedCompanion.region }}</p>
+        <p>{{ selectedCompanion.description }}</p>
+      } @else {
+        <p>No hay compañero seleccionado</p>
+      }
+    </section>
+
     <router-outlet></router-outlet>
   </main>
 </div>
