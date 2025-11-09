@@ -15,29 +15,45 @@ import { ReynaComponent } from './entregas/reyna/component/reynaComponent/reynaC
 import { SalinasComponent } from './entregas/salinas/component/salinasComponent/salinasComponent';
 import { SemperteguiComponent } from './entregas/sempertegui/component/semperteguiComponent/semperteguiComponent';
 import { SilvestreComponent } from './entregas/silvestre/component/silvestreComponent/silvestreComponent';
+import { JuegosComponent } from './entregas/silvestre/component/juegosZelda/juegos';
+import { PersonajesComponent } from './entregas/silvestre/component/personajesZelda/personajes';
+import { LugaresComponent } from './entregas/silvestre/component/lugaresZelda/lugares';
 import { SoaresComponent } from './entregas/soares/component/soaresComponent/soaresComponent';
 import { UskiComponent } from './entregas/uski/component/uskiComponent/uskiComponent';
 import { ZanonComponent } from './entregas/zanon/component/zanonComponent/zanonComponent';
 
+
+
+
+
+
 export const routes: Routes = [
-    { path: '', component: Home },
-    { path: 'home', component: Home },
-    { path: 'alcalde', component: AlcaldeComponent },
-    { path: 'alcanyiz', component: AlcanyizComponent },
-    { path: 'alfonso', component: AlfonsoComponent },
-    { path: 'calinescu', component: CalinescuComponent },
-    { path: 'castanyera', component: CastanyeraComponent },
-    { path: 'contreras', component: ContrerasComponent },
-    { path: 'fernandez', component: FernandezComponent },
-    { path: 'garcia', component: GarciaComponent },
-    { path: 'pallas', component: PallasComponent },
-    { path: 'palomares', component: PalomaresComponent },
-    { path: 'pavon', component: PavonComponent },
-    { path: 'reyna', component: ReynaComponent },
-    { path: 'salinas', component: SalinasComponent },
-    { path: 'sempertegui', component: SemperteguiComponent },
-    { path: 'silvestre', component: SilvestreComponent },
-    { path: 'soares', component: SoaresComponent },
-    { path: 'uski', component: UskiComponent },
-    { path: 'zanon', component: ZanonComponent },
+  { path: '', component: Home },
+  { path: 'home', component: Home },
+  { path: 'alcalde', component: AlcaldeComponent },
+  { path: 'alcanyiz', component: AlcanyizComponent },
+  { path: 'alfonso', component: AlfonsoComponent },
+  { path: 'calinescu', component: CalinescuComponent },
+  { path: 'castanyera', component: CastanyeraComponent },
+  { path: 'contreras', component: ContrerasComponent },
+  { path: 'fernandez', component: FernandezComponent },
+  { path: 'garcia', component: GarciaComponent },
+  { path: 'pallas', component: PallasComponent },
+  { path: 'palomares', component: PalomaresComponent },
+  { path: 'pavon', component: PavonComponent },
+  { path: 'reyna', component: ReynaComponent },
+  { path: 'salinas', component: SalinasComponent },
+  { path: 'sempertegui', component: SemperteguiComponent },
+      { 
+        path: 'silvestre',
+    component: SilvestreComponent,
+    children: [
+      { path: 'juegos', component: JuegosComponent },
+      { path: 'personajes', component: PersonajesComponent },
+      { path: 'lugares', component: LugaresComponent }
+        ]
+    },
+  { path: 'soares', component: SoaresComponent },
+  { path: 'uski', component: UskiComponent },
+  { path: 'zanon', component: ZanonComponent },
 ];
